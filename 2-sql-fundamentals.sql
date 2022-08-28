@@ -75,3 +75,24 @@ SELECT Name, Continent, Region, Population FROM Country WHERE Population > 10000
 SELECT Name, Continent, Population FROM Country WHERE Name LIKE '%island%' ORDER BY Population DESC;
 SELECT Name, Continent, Population FROM Country WHERE Name LIKE '_a%' ORDER BY Population DESC;
 SELECT Name, Continent, Population FROM Country WHERE Continent IN ('Europe', 'Asia');
+
+
+-- ## REMOVING DUPLICATES ##
+SELECT DISTINCT Continent FROM Country;
+
+DROP TABLE IF EXISTS test;
+CREATE TABLE test ( a int, b int );
+INSERT INTO test VALUES ( 1, 1 );
+INSERT INTO test VALUES ( 2, 1 );
+INSERT INTO test VALUES ( 3, 1 );
+INSERT INTO test VALUES ( 4, 1 );
+INSERT INTO test VALUES ( 5, 1 );
+INSERT INTO test VALUES ( 1, 2 );
+INSERT INTO test VALUES ( 1, 2 );
+INSERT INTO test VALUES ( 1, 2 );
+INSERT INTO test VALUES ( 1, 2 );
+INSERT INTO test VALUES ( 1, 2 );
+SELECT * FROM test;
+SELECT DISTINCT a FROM test;
+SELECT DISTINCT b FROM test;
+SELECT DISTINCT a, b FROM test;
