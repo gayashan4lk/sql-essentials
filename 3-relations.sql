@@ -37,4 +37,24 @@ SELECT l.id AS leftID, l.description AS left, r.id AS rightID, r.description AS 
 SELECT l.id AS leftID, l.description AS left, r.id AS rightID, r.description AS right 
     FROM left AS l LEFT JOIN right AS r ON l.id = r.id;
 
-    
+SELECT s.id, i.name, i.description, s.quantity, s.date, s.price 
+    FROM sale AS s JOIN item AS i ON s.item_id = i.id;
+
+SELECT s.id AS saleID, i.name AS 'Item Name', i.description as 'Item Description', s.quantity, s.date, s.price
+    FROM sale AS s JOIN item AS i ON s.item_id = i.id;
+
+SELECT s.id, i.name AS 'Item Name', i.description, s.quantity, s.date, c.name AS 'Customer Name' ,s.price
+    FROM sale AS s 
+    JOIN item AS i ON s.item_id = i.id
+    JOIN customer AS c ON s.customer_id = c.id;
+
+-- ###
+
+INSERT INTO customer (name) VALUES ('Jane Smith');
+SELECT * FROM customer;
+
+SELECT c.name AS Customer, c.zip, i.name AS Item, i.description, s.quantity, s.price
+    FROM customer AS c
+    LEFT JOIN sale AS s ON s.customer_id = c.id
+    LEFT JOIN item AS i ON s.item_id = i.id
+    ORDER BY Customer, Item;
