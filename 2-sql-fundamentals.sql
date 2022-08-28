@@ -96,3 +96,9 @@ SELECT * FROM test;
 SELECT DISTINCT a FROM test;
 SELECT DISTINCT b FROM test;
 SELECT DISTINCT a, b FROM test;
+
+-- ## ORDERING ##
+SELECT Continent, Name FROM Country ORDER BY Continent, Name
+SELECT Name, Continent, Region FROM Country ORDER BY Continent DESC, Region ASC, Name ASC;
+
+
