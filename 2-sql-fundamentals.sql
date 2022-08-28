@@ -101,4 +101,19 @@ SELECT DISTINCT a, b FROM test;
 SELECT Continent, Name FROM Country ORDER BY Continent, Name
 SELECT Name, Continent, Region FROM Country ORDER BY Continent DESC, Region ASC, Name ASC;
 
+-- ## CONDITIONAL EXPRESSIONS ##
+DROP TABLE IF EXISTS booltest;
+CREATE TABLE booltest (a INTEGER, b INTEGER);
+INSERT INTO booltest VALUES (1, 0);
 
+SELECT * FROM booltest;
+
+SELECT 
+    CASE WHEN a THEN 'TRUE' ELSE 'FALSE' END AS boolA, 
+    CASE WHEN b THEN 'TRUE' ELSE 'FALSE' END AS boolB 
+    FROM booltest;
+    
+SELECT 
+    CASE a WHEN 1 THEN 'TRUE' ELSE 'FALSE' END AS boolA, 
+    CASE b WHEN 1 THEN 'TRUE' ELSE 'FALSE' END AS boolB 
+    FROM booltest;
