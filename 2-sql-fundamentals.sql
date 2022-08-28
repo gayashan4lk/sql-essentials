@@ -56,3 +56,22 @@ CREATE TABLE test (Id INTEGER PRIMARY KEY, Value TEXT UNIQUE, Comment TEXT DEFAU
 INSERT INTO test (Value) VALUES ('test value');
 INSERT INTO test (Value, Comment) VALUES ('Income', '25000');
 INSERT INTO test (Value) VALUES ('Income'); -- UNIQUE constraint failed!
+
+-- ## ALTER TABLE ##
+ALTER TABLE employee ADD City TEXT;
+ALTER TABLE employee ADD Location TEXT DEFAULT 'middle of nowhere.';
+
+-- ## ID COLUMNS ##
+DROP TABLE IF EXISTS Transactions;
+CREATE TABLE Transactions (Id INTEGER PRIMARY KEY UNIQUE NOT NULL, Amount INTEGER NOT NULL, Details TEXT);
+INSERT INTO Transactions (Amount, Details) Values (250, 'Buying a tv.');
+INSERT INTO Transactions (Amount, Details) Values (100, 'Lunch');
+INSERT INTO Transactions (Amount) Values (25);
+SELECT * FROM Transactions;
+
+-- ## FILTERING DATA ##
+SELECT Name, Continent, Population FROM Country WHERE Population < 100000 OR Population IS NULL ORDER BY Population DESC;
+SELECT Name, Continent, Region, Population FROM Country WHERE Population > 1000000 AND Continent = 'North America' ORDER BY Name ASC;
+SELECT Name, Continent, Population FROM Country WHERE Name LIKE '%island%' ORDER BY Population DESC;
+SELECT Name, Continent, Population FROM Country WHERE Name LIKE '_a%' ORDER BY Population DESC;
+SELECT Name, Continent, Population FROM Country WHERE Continent IN ('Europe', 'Asia');
